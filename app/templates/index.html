@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web Scrabing Homework --- Mars</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+
+
+  <body>
+    <div class="container">
+      <div class="jumbotron text-center">
+        <h1>Web Scrabing Homework --- Mars</h1>
+      </div>
+
+      <div class="jumbotron text-center">
+        <p><a class="btn btn-dark" href="/scrape" role="button">Go to Scrape</a></p>
+      </div>
+    </div>
+
+
+
+    <div class="row" id="mars-news">
+      <div class="col-md-12">
+            <h3>Latest Mars News</h3>
+            <h4>{{ mars.news_title }}</h4>
+            <h4>{{ mars.news_content}}</h4>
+        </div>
+    </div>
+
+
+    <div class="row" id="mars-picture">
+      <div class="col-md-12">
+        <h3>Mars Picture Retrieved</h3>
+        <img src="{{mars.mars_image}}"/>
+      </div>
+    </div>
+
+    <div class="row" id="mars-table">
+      <div class="col-md-12">
+          <h3>Mars Parameters</h3>
+          {{ mars.mars_table | safe }}
+      </div>
+    </div>
+
+    <div class="row" id="hemispheres">
+      <div class="col-md-12">
+        <h3>Mars Hemispheres</h3>
+      </div>
+
+      {% for hemisphere in mars.hemispheres %}
+      <div class="col-md-3">
+        <div class="caption">
+          <h4>{{hemisphere.title}}</h4>
+        </div>
+        <div class="img-thumbnail">
+          <img src="{{hemisphere.img_url}}" >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
